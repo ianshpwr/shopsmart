@@ -1,4 +1,4 @@
-name: Build Pipeline
+name: Build Frontend
 
 on:
   push:
@@ -15,10 +15,12 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
-          node-version: '18'
+          node-version: 18
 
-      - name: Install dependencies
+      - name: Install frontend dependencies
+        working-directory: client
         run: npm install
 
-      - name: Build project
+      - name: Build frontend
+        working-directory: client
         run: npm run build
